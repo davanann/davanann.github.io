@@ -80,46 +80,87 @@ window.addEventListener('load', () => {
     document.body.classList.add('loaded');
 });
 
-// Spotify Currently Playing API (Demo Version)
-class DemoSpotifyWidget {
+
+// Last.fm API Widget
+class LastFMWidget {
     constructor() {
-        this.sampleTracks = [
-            { name: "Bohemian Rhapsody", artist: "Queen", progress: 45 },
-            { name: "Blinding Lights", artist: "The Weeknd", progress: 70 },
-            { name: "Save Your Tears", artist: "The Weeknd", progress: 30 },
-            { name: "Not Playing", artist: "Spotify", progress: 0 }
-        ];
-        this.currentTrack = 0;
+        this.apiKey = 'e8abd35e397f570f0bddb547fd492b07'; // Replace with your actual Last.fm API key
+        this.username = 'radiodead04'; // Replace with your Last.fm username
         this.widget = document.querySelector('.spotify-widget');
         this.trackName = document.querySelector('.track-name');
         this.trackArtist = document.querySelector('.track-artist');
         this.progress = document.querySelector('.progress');
         
-        this.initDemo();
+        this.init();
     }
 
-    initDemo() {
-        this.updateDemo();
-        setInterval(() => this.updateDemo(), 10000);
-    }
-
-    updateDemo() {
-        const track = this.sampleTracks[this.currentTrack];
-        
-        this.trackName.textContent = track.name;
-        this.trackArtist.textContent = track.artist;
-        this.progress.style.width = `${track.progress}%`;
-        
-        if (track.name === "Not Playing") {
-            this.widget.classList.remove('playing');
-        } else {
-            this.widget.classList.add('playing');
+    async init() {
+        try {
+            await this.updateNowPlaying();
+            // Update every 30 seconds
+            setInterval(() => this.updateNowPlaying(), 30000);
+        } catch (error) {
+            console.error('Last.fm widget error:', error);
+            this.showError();
         }
-        
-        this.currentTrack = (this.currentTrack + 1) % this.sampleTracks.length;
+    }
+
+    async updateNowPlaying() {
+        try {
+            const response = await fetch(
+                `https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${this.username}&api_key=${this.apiKey}&format=json&limit=1`
+            );
+            
+            if (response.ok) {
+                const data = await response.json();
+                this.updateUI(data);
+            } else {
+                this.showNotPlaying();
+            }
+        } catch (error) {
+            console.error('Error fetching Last.fm data:', error);
+            this.showError();
+        }
+    }
+
+    updateUI(data) {
+        // Check if we have tracks and if the first track is now playing
+        if (data.recenttracks && data.recenttracks.track && data.recenttracks.track.length > 0) {
+            const track = data.recenttracks.track[0];
+            
+            // Check if track is currently playing
+            const isNowPlaying = track['@attr'] && track['@attr'].nowplaying === 'true';
+            
+            if (isNowPlaying) {
+                this.trackName.textContent = track.name;
+                this.trackArtist.textContent = track.artist['#text'];
+                this.progress.style.width = '70%'; // Last.fm doesn't provide exact progress
+                this.widget.classList.add('playing');
+            } else {
+                // Show most recent track if nothing is currently playing
+                this.trackName.textContent = track.name;
+                this.trackArtist.textContent = track.artist['#text'];
+                this.progress.style.width = '0%';
+                this.widget.classList.remove('playing');
+            }
+        } else {
+            this.showNotPlaying();
+        }
+    }
+
+    showNotPlaying() {
+        this.trackName.textContent = 'No recent tracks';
+        this.trackArtist.textContent = 'Last.fm';
+        this.progress.style.width = '0%';
+        this.widget.classList.remove('playing');
+    }
+
+    showError() {
+        this.trackName.textContent = 'Unable to load';
+        this.trackArtist.textContent = 'Check connection';
+        this.progress.style.width = '0%';
     }
 }
-
 // GitHub API Integration
 class GitHubWidget {
     constructor() {
