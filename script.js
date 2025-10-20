@@ -286,15 +286,9 @@ class DemoGitHubWidget {
     }
 }
 
-// Initialize all widgets when page loads
+// Initialize when page loads
 document.addEventListener('DOMContentLoaded', () => {
-    // Spotify Widget
-    new DemoSpotifyWidget();
-    
-    // GitHub Widget - Choose one:
-    // For real GitHub API (replace 'your-github-username'):
-    // new GitHubWidget();
-    
-    // For demo version:
+    // Make sure you're using LastFMWidget, NOT DemoSpotifyWidget
+    new LastFMWidget();
     new DemoGitHubWidget();
 });
