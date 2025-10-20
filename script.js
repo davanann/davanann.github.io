@@ -108,7 +108,7 @@ class LastFMWidget {
     async updateNowPlaying() {
         try {
             const response = await fetch(
-                `https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${this.username}&api_key=${this.apiKey}&format=json&limit=1`
+                `https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${this.radiodead04}&api_key=${this.e8abd35e397f570f0bddb547fd492b07}&format=json&limit=1`
             );
             
             if (response.ok) {
