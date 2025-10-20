@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dave Persaud - Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">DP</div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#education" class="nav-link">Education</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Dave Persaud</h1>
+            <p class="hero-subtitle">Software Developer & Computer Science Student</p>
+            <p class="hero-description">Passionate about creating innovative solutions and bringing ideas to life through code</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" onclick="scrollToSection('projects')">View Projects</button>
+                <button class="btn btn-secondary" onclick="scrollToSection('contact')">Contact Me</button>
+            </div>
+        </div>
+    </section>
+
+<section id="about" class="section">
+    <div class="container">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-grid-with-photo">
+            <div class="about-content-with-photo">
+                <div class="about-content">
+                    <p>I'm a passionate software developer with expertise in full-stack web development, currently pursuing my degree in Computer Science at the University of Guelph.</p>
+                    <p>I love solving complex problems and creating efficient, scalable solutions that make a positive impact on users' experiences.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">GitHub</a>
+                        <a href="#" class="social-link">LinkedIn</a>
+                        <a href="#" class="social-link">Email</a>
+                    </div>
+                </div>
+                
+                <!-- API Widgets Section -->
+                <div class="api-widgets-grid">
+                    <!-- Spotify Widget -->
+                    <div class="spotify-widget">
+                        <h4>Currently Listening</h4>
+                        <div class="spotify-track">
+                            <div class="track-info">
+                                <div class="track-name">Not Playing</div>
+                                <div class="track-artist">Spotify</div>
+                            </div>
+                            <div class="spotify-logo">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="#1DB954">
+                                    <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-2-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress"></div>
+                        </div>
+                    </div>
+
+                    <!-- GitHub Widget -->
+                    <div class="github-widget">
+                        <h4>GitHub Activity</h4>
+                        <div class="github-stats">
+                            <div class="github-stat">
+                                <div class="stat-number" id="repo-count">0</div>
+                                <div class="stat-label">Repositories</div>
+                            </div>
+                            <div class="github-stat">
+                                <div class="stat-number" id="follower-count">0</div>
+                                <div class="stat-label">Followers</div>
+                            </div>
+                            <div class="github-stat">
+                                <div class="stat-number" id="gist-count">0</div>
+                                <div class="stat-label">Gists</div>
+                            </div>
+                        </div>
+                        <div class="github-recent">
+                            <div class="recent-label">Recent Activity</div>
+                            <div class="recent-item" id="recent-activity">Loading...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="about-photo-section">
+                <img src="assets/your-photo.jpg" alt="David Park" class="about-photo-terminal">
+                <div class="about-facts">
+                    <h3>Quick Facts</h3>
+                    <ul>
+                        <li>🎓 Computer Science Student</li>
+                        <li>💻 Full-Stack Developer</li>
+                        <li>🚀 Passionate about AI/ML</li>
+                        <li>🏆 Hackathon Enthusiast</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Education Section -->
+    <section id="education" class="section bg-dark">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="education-card">
+                <h3>University of Guelph</h3>
+                <p class="education-degree">Bachelor of Computing - Computer Science</p>
+                <p class="education-details">Expected Graduation: 2025 | GPA: 3.8/4.0</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+        <div class="container">
+            <h2 class="section-title">Experience</h2>
+            <div class="experience-grid">
+                <div class="experience-card">
+                    <h3>Software Engineering Intern</h3>
+                    <p class="company">Tech Company • May 2024 - Aug 2024</p>
+                    <p>Developed and maintained web applications, collaborated with cross-functional teams</p>
+                </div>
+                <div class="experience-card">
+                    <h3>Teaching Assistant</h3>
+                    <p class="company">University of Guelph • Sept 2023 - Present</p>
+                    <p>Assisted students with programming concepts and course materials</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section bg-dark">
+        <div class="container">
+            <h2 class="section-title">Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>E-Commerce Platform</h3>
+                    <p>Full-stack e-commerce solution with real-time inventory management and payment integration</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Next.js</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">MongoDB</span>
+                        <span class="tech-tag">Stripe</span>
+                    </div>
+                    <button class="btn-link">View Project →</button>
+                </div>
+                <div class="project-card">
+                    <h3>Task Management App</h3>
+                    <p>Collaborative task management application with real-time updates and team features</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Firebase</span>
+                        <span class="tech-tag">Tailwind CSS</span>
+                    </div>
+                    <button class="btn-link">View Project →</button>
+                </div>
+                <div class="project-card">
+                    <h3>AI Chat Assistant</h3>
+                    <p>Intelligent chatbot using natural language processing for customer support</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">TensorFlow</span>
+                        <span class="tech-tag">FastAPI</span>
+                    </div>
+                    <button class="btn-link">View Project →</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="container">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Languages</h3>
+                    <div class="skill-list">
+                        <span>JavaScript</span>
+                        <span>TypeScript</span>
+                        <span>Python</span>
+                        <span>Java</span>
+                        <span>C</span>
+                        <span>SQL</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Frontend</h3>
+                    <div class="skill-list">
+                        <span>React</span>
+                        <span>Next.js</span>
+                        <span>Tailwind CSS</span>
+                        <span>HTML/CSS</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Backend</h3>
+                    <div class="skill-list">
+                        <span>Node.js</span>
+                        <span>Express</span>
+                        <span>REST APIs</span>
+                        <span>GraphQL</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Tools</h3>
+                    <div class="skill-list">
+                        <span>Git</span>
+                        <span>Docker</span>
+                        <span>AWS</span>
+                        <span>MongoDB</span>
+                        <span>PostgreSQL</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="contact-description">I'm always open to discussing new opportunities, interesting projects, or just having a chat about technology.</p>
+            <div class="contact-buttons">
+                <button class="btn btn-primary">Send Message</button>
+                <button class="btn btn-secondary">Download Resume</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Dave Persaud. Built with vanilla HTML, CSS & JavaScript.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
