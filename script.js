@@ -80,12 +80,14 @@ window.addEventListener('load', () => {
     document.body.classList.add('loaded');
 });
 
+// ... (existing code above)
 
 // Last.fm API Widget
 class LastFMWidget {
     constructor() {
-        this.apiKey = 'e8abd35e397f570f0bddb547fd492b07'; // Replace with your actual Last.fm API key
-        this.username = 'radiodead04'; // Replace with your Last.fm username
+        // Corrected property names for the API key and username
+        this.apiKey = 'e8abd35e397f570f0bddb547fd492b07'; // Your Last.fm API key
+        this.username = 'radiodead04'; // Your Last.fm username
         this.widget = document.querySelector('.spotify-widget');
         this.trackName = document.querySelector('.track-name');
         this.trackArtist = document.querySelector('.track-artist');
@@ -107,14 +109,16 @@ class LastFMWidget {
 
     async updateNowPlaying() {
         try {
+            // **FIXED:** Using 'this.username' and 'this.apiKey' instead of raw strings
             const response = await fetch(
-                `https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${this.radiodead04}&api_key=${this.e8abd35e397f570f0bddb547fd492b07}&format=json&limit=1`
+                `https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${this.username}&api_key=${this.apiKey}&format=json&limit=1`
             );
             
             if (response.ok) {
                 const data = await response.json();
                 this.updateUI(data);
             } else {
+                // If response is not OK (e.g., 404, 500), show not playing
                 this.showNotPlaying();
             }
         } catch (error) {
@@ -161,6 +165,8 @@ class LastFMWidget {
         this.progress.style.width = '0%';
     }
 }
+// ... (rest of script.js)
+
 // GitHub API Integration
 class GitHubWidget {
     constructor() {
